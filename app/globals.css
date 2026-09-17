@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply text-foreground font-body antialiased;
+  background-color: hsl(var(--background));
+  background-image:
+    radial-gradient(circle at 15% -10%, hsl(var(--primary) / 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 90% 10%, hsl(var(--accent) / 0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-heading tracking-tight;
+}
+
+::selection {
+  background-color: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Faint brand-hued dot grid — used instead of a flat slab or a generic
+   gradient banner. Single hue only, per the no-gradient rule. */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, hsl(var(--primary) / 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Ambient dark glow panel (auth screen, public booking header) — replaces
+   the old solid-teal slab, which read as a leftover light-theme fragment
+   against a dark glass UI. */
+.bg-brand-panel {
+  background-color: hsl(var(--background));
+  background-image:
+    radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 85% 80%, hsl(var(--accent) / 0.12) 0%, transparent 50%),
+    radial-gradient(circle, hsl(var(--primary) / 0.12) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    22px 22px;
+}
+
+/* Glassmorphism surfaces. Blur is intentionally capped at 20px anywhere in
+   the app — never used on repeated/list elements (see Card's `flat`
+   variant), only on singular containers (cards, modals, nav, inputs). */
+.glass {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-strong {
+  background-color: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border-strong);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-subtle {
+  background-color: var(--glass-bg-subtle);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Design-system tokens. Dark, low-glare navy/charcoal base — deliberately
+   not pure black — with the existing teal/amber brand hues carried over
+   and brightened for legibility against a dark surface. */
+:root {
+  --background: 222 24% 6%;
+  --foreground: 210 20% 96%;
+  --card: 222 22% 10%;
+  --card-foreground: 210 20% 96%;
+  --border: 222 15% 20%;
+  --input: 222 15% 18%;
+  --muted: 222 18% 14%;
+  --muted-foreground: 220 10% 65%;
+
+  --primary: 173 70% 38%;
+  --primary-glow: 168 78% 52%;
+  --primary-foreground: 0 0% 100%;
+
+  --accent: 38 92% 50%;
+  --accent-foreground: 28 40% 10%;
+
+  --destructive: 0 55% 49%;
+  --destructive-foreground: 0 0% 100%;
+
+  --success: 152 55% 45%;
+  --success-foreground: 0 0% 100%;
+
+  --warning: 38 90% 55%;
+  --warning-foreground: 30 40% 10%;
+
+  --info: 210 90% 60%;
+  --info-foreground: 222 30% 10%;
+
+  --ring: 168 78% 52%;
+
+  --glass-bg: rgba(20, 24, 32, 0.55);
+  --glass-bg-strong: rgba(20, 24, 32, 0.75);
+  --glass-bg-subtle: rgba(20, 24, 32, 0.35);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-strong: rgba(255, 255, 255, 0.14);
+}
